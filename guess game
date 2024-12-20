@@ -1,0 +1,48 @@
+from random import randint
+
+difficulty = 5
+easy =  10
+
+
+def check_the_answer(guess,answer,turns):
+     if    guess > answer:
+        print("the number is to high")
+        return turns - 1
+     elif guess < answer:
+        print("the number is too low")
+        return turns - 1
+     else:
+       print(f"you got it , the answer was {answer}")
+
+
+def check_difficulty():
+  level = input("what level do you wwant'easy'or 'hard':")
+  if level == 'easy':
+    return easy
+  else:
+    return difficulty
+
+
+def game():
+   print("welcome to guessing game :")
+   print("I am thinking of a number 1 to 100:")
+   answer = randint(1, 100)
+   print(f"psst ,the answer is {answer}")
+
+   turns = check_difficulty()
+   print(f"you have {turns} atttempts remaining to guess the number:")
+
+   guess = 0
+   while guess != answer and turns > 0:
+        guess = int(input("guess the number:"))
+        turns= check_the_answer(guess, answer,turns)
+    
+        if turns==0:
+         print("you lose")
+         return
+        elif  guess!=answer:
+          print("guess again ")
+
+
+          
+game()
