@@ -1,0 +1,36 @@
+import random
+
+name=input("what is your name :")
+print("hello",name)
+
+print("welcome to the guessing game")
+
+words=['umbrella','rainbow','pillow','elephant','sunrise','treasure','sandwich','bicycle','mysetry']
+word=random.choice(words)
+
+guesses=''
+turns=12
+
+while turns > 0:
+    failed=0
+   
+    for char in word:
+        if char in guesses:
+         print(char, end='')
+        else:
+         print("_")
+         failed+=1
+
+    if failed==0:  
+      print("congratulation you won",  word)
+      break
+    guess=input("guess the character: ")
+    guesses+=guess
+
+    if guess not in word:
+        print("wrong word , try it again ")
+        turns-=1
+        print("you have",turns)
+
+    if turns ==0:
+        print("sorry you lost ,the word was",word)
